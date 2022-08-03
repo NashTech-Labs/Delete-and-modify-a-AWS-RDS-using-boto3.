@@ -1,12 +1,22 @@
 # import the boto3 which will use to interact  with the aws
 import boto3
 
-client = boto3.client('rds')
+# We will take the all imput from the end user.
 
-response = client.modify_db_instance(
-    DBInstanceIdentifier=input("Enter the instance name"),
-    MasterUserPassword=input("Enter the password")
-    # DBInstanceIdentifier='database-instance-01',
-    # MasterUserPassword='new-pa$$word'
+# You need to enter rds as input
+AWS_service= input("Enter the service name\n")
+
+database_name=input("Enter the database name\n")
+
+user_password=input("Enter the password to modify\n")
+
+client = boto3.client(AWS_service)
+
+modify_rds = client.modify_db_instance(
+  
+    DBInstanceIdentifier=database_name,
+    MasterUserPassword=user_password
   )  
-print(response)
+print(modify_rds)
+
+print("Your RDS has been modified Successfully ")

@@ -10,9 +10,9 @@ database_name=input("Enter the database name\n")
 
 user_password=input("Enter the password to modify\n")
 
-client = boto3.client(AWS_service)
+res = boto3.client(AWS_service)
 
-modify_rds = client.modify_db_instance(
+modify_rds = res.modify_db_instance(
   
     DBInstanceIdentifier=database_name,
     MasterUserPassword=user_password
